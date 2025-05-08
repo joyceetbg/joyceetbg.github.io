@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>happy birthday bel!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'times', 'times';
+      text-align: center;
+      background-color: rgb(251, 251, 251);
+      color: #474545eb;
+      background-size: cover;
+      background-position: center;
+      transition: background 2s ease-in-out, color 1s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+
+    #startText {
+      font-size: 3.2em;
+      margin-top: 50px;
+      top: 50%;
+      left: 50%;
+    }
+
+    #musicBtn {
+      background-color: #393535;
+      color: rgb(252, 238, 238);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-size: 2.0em;
+      cursor: pointer;
+      margin-top: 50px;
+    }
+
+    #bigText {
+      font-size: 4.0em;
+      margin-top: 40px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      opacity: 3;
+    }
+
+    .showText {
+      opacity: 3;
+      transform: scale(1);
+      visibility: visible;
+    }
+
+    #message {
+      font-size: 2.0em;
+      color: white;
+      margin-top: 50px;
+      display: none;
+      white-space: pre-wrap;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="introContainer">
+    <div id="startText">coba tekan dulu</div>
+    <button id="musicBtn" onclick="startSurprise()">▶ tekan ini</button>
+  </div>  
+
+  <audio id="bgm" loop>
+    <source src="The Police - Every Breath You Take (Visualiser).mp3" type="audio/mpeg">
+    Browsermu tidak mendukung audio :(
+  </audio>
+
+  <div id="bigText"></div>
+  <div id="message"></div>
+
+  <script>
+    const bigText1 = "ALOO BEL";
+    const bigText2 = "HAPPY LAST TEEN YA GADIS TEMBALANG";
+    const finalMessage = "semoga semua doa dan wish yang kau simpan dalam hati satu per satu Tuhan kabulkan yaaaa bel, AMIN (aku bagian mengaminkan aja) panjang umur dan jaga kesehatan disana bel, pastinya semoga Tuhan memperlancar kuliahmu yaa dan diberkati lewat orang-orang baik disekelilingmu disana. pls tetap jadi abel pembuka grup dengan pap pagi dan tahun ini first ulangtahun LDR sama kami dulu ya lek, biasanya sekarang kita udah dikamarmu hembus lilin :( tunggu aku di liburan selanjutnya ya bel! entah jawa bagian mana lagi yang bakal kita datangi. intinya apaaapuuun doa dan wish mu yang terbaik, Tuhan kabulkan di umurmu yang baru ini yaaaaa AMIN. sekali lagi, selamat ulang tahun yang ke-19 ya hasian. send hugs from surabaya, miss you abenggg ♡ .";
+
+    let i = 0;
+
+    function startSurprise() {
+      document.getElementById("bgm").play();
+      document.getElementById("musicBtn").style.display = "none";
+      document.getElementById("startText").style.display = "none";
+      document.body.style.backgroundImage = "url('WhatsApp Image 2025-05-06 at 14.15.42_8a7ba374.jpg')";
+
+      const bigText = document.getElementById("bigText");
+      console.log("Menampilkan teks pertama...");
+      bigText.innerText = bigText1;
+      bigText.classList.remove("showText");
+      setTimeout(() => {
+        bigText.classList.add("showText");
+      }, 100);
+
+      setTimeout(() => {
+        console.log("Mengganti ke teks kedua...");
+        bigText.classList.remove("showText");
+        setTimeout(() => {
+          bigText.innerText = bigText2;
+          bigText.classList.add("showText");
+        }, 1000);
+      }, 5000);
+
+      setTimeout(() => {
+        console.log("Menyembunyikan teks dan memulai pesan akhir...");
+        bigText.classList.remove("showText");
+        setTimeout(() => {
+          bigText.style.display = "none";
+          document.getElementById("message").style.display = "block";
+          typeWriter();
+        }, 1000);
+      }, 10000);
+    }
+
+    function typeWriter() {
+      if (i < finalMessage.length) {
+        document.getElementById("message").innerHTML += finalMessage.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+  </script>
+
+</body>
+</html>
